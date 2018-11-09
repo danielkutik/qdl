@@ -1,0 +1,1 @@
+SUBSYSTEM=="usb|tty", ACTION=="add|change", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="9008", ENV{NM_UNMANAGED}="1", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", MODE="0660", GROUP="qdl"

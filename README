@@ -14,3 +14,12 @@ e.g. the libxml2-dev package.
 
 With this installed run:
   make
+
+udev: QDL with NetworkManager and ModemManager
+==============================================
+On systems running NetworkManager and/or ModemManager the USB device
+of id 05c6:9008 will be blocked by NetworkManager and/or ModemManager.
+
+To avoid this we need to tell NetworkManager and ModemManager to ignore
+the device by adding a rule to udev.
+To do so, copy 99-qdl.rules to /etc/udev/rules.d/.
