@@ -232,6 +232,10 @@ static int decode_programmer_archive(struct sahara_image *blob, struct sahara_im
 			images[id].name = strdup(tok);
 		images[id].len = filesize;
 		images[id].ptr = malloc(filesize);
+		if (!images[id].ptr) {
+			ux_err("failed to allocate memory for image\n");
+			goto err;
+		}
 		memcpy(images[id].ptr, ptr, filesize);
 
 		ptr += filesize;
@@ -354,6 +358,7 @@ static int decode_sahara_config(struct sahara_image *blob, struct sahara_image *
 
 	xmlFreeDoc(doc);
 	free(blob_name_buf);
+	blob_name_buf = NULL;
 
 	free(blob->ptr);
 	blob->ptr = NULL;
